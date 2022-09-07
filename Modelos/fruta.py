@@ -34,3 +34,18 @@ class FrutaEsquemasCreate(ma.Schema):
         ordered = True
 
     descripcion = ma.fields.String(required=True)
+
+class FrutaEsquemaDelete(ma.Schema):
+    "Esquema de validacion para la eliminacion de una fruta"
+    class Meta:
+        ordered = True
+
+    id = ma.fields.Integer(required=True)
+
+class FrutaEsquemaUpdate(ma.Schema):
+    "Esquema de validacion para la actualizacion de una fruta"
+    class Meta:
+        ordered = True
+
+    id = ma.fields.Integer(required=True)
+    descripcion = ma.fields.String(required=True)
