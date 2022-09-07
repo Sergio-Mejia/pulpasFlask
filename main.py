@@ -3,7 +3,9 @@ from flask_cors import CORS
 import json
 from waitress import serve
 from database import db
+from flask_smorest import Api
 from Controladores import fruta_controlador
+from BluePrints import fruta_blueprint
 from flask import jsonify
 
 
@@ -30,10 +32,19 @@ def create_app():
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     db.init_app(app)
 
-    @app.route("/fruta", methods=['GET'])
-    def getFruta():
-        json = fruta_controlador.get()
-        return json
+    #swagger
+    app.config["API_TITLE"] = "Backend Pulpas fruta"
+    app.config["API_VERSION"] = "0.1.0"
+    app.config["OPENAPI_VERSION"] = "3.0.2"
+    app.config["OPENAPI_JSON_PATH"] = "api-spec.json"
+    app.config["OPENAPI_URL_PREFIX"] = "/"
+    app.config["OPENAPI_SWAGGER_UI_PATH"] = "/"
+    app.config["OPENAPI_SWAGGER_UI_URL"] = "https://cdn.jsdelivr.net/npm/swagger-ui-dist/"  # noqa: 501
+
+    #Registrar Blueprints
+    api = Api(app)
+    api.register_blueprint(fruta_blueprint.frutaBlueprint)
+
 
     return app
 

@@ -1,4 +1,5 @@
 from database import db
+import marshmallow as ma
 
 
 class Fruta(db.Model):
@@ -25,3 +26,11 @@ class Fruta(db.Model):
         Cuando son mas de 1 registros se utiliza el metodo many2many.
         """
         return [item.serialize for item in self.many2many]
+
+
+class FrutaEsquemasCreate(ma.Schema):
+    "Esquema de validacion para la creacion de una fruta -> Create"
+    class Meta:
+        ordered = True
+
+    descripcion = ma.fields.String(required=True)
