@@ -16,3 +16,9 @@ def create(data):
     mensaje_respuesta = peso_controlador.create(descripcion)
     return make_response(mensaje_respuesta, 200)
 
+@pesoBluePrint.route('/delete', methods=['DELETE'])
+@pesoBluePrint.arguments(peso.pesoSchemaDelete, location='json')
+def delete(data):
+    id = data['id']
+    mensaje_respuesta = peso_controlador.delete(id)
+    return make_response(mensaje_respuesta, 200)

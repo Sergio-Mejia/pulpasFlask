@@ -8,3 +8,11 @@ def create(descripcion: str) -> dict:
     respuesta = "Nuevo peso creado"
 
     return respuesta
+
+def delete(id: int) -> dict:
+    peso_borrar = Peso.query.get(id)
+    db.session.delete(peso_borrar)
+    db.session.commit()
+    respuesta = "Peso eliminado"
+
+    return respuesta

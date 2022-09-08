@@ -28,7 +28,15 @@ class Peso(db.Model):
 
 
 class pesoSchemaCreate(ma.Schema):
+    "Esquema de validacion para la creación de peso"
     class Meta:
         ordered = True
 
     descripcion = ma.fields.String(required=True)
+
+class pesoSchemaDelete(ma.Schema):
+    "Esquema de validación para la elimnación de un peso"
+    class Meta:
+        ordered = True
+
+    id = ma.fields.Integer(required=True)
