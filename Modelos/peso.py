@@ -40,3 +40,12 @@ class pesoSchemaDelete(ma.Schema):
         ordered = True
 
     id = ma.fields.Integer(required=True)
+
+class pesoSchemaUpdate(ma.Schema):
+    "Esquema de validacion para la actualizacion de un peso"
+    class Meta:
+        ordered = True
+
+    id = ma.fields.Integer(required=True)
+    descripcion = ma.fields.String(required=True)
+
