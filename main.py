@@ -6,6 +6,7 @@ from database import db
 from flask_smorest import Api
 from Controladores import fruta_controlador
 from BluePrints import fruta_blueprint
+from BluePrints import peso_blueprint
 from flask import jsonify
 
 
@@ -44,6 +45,7 @@ def create_app():
     #Registrar Blueprints
     api = Api(app)
     api.register_blueprint(fruta_blueprint.frutaBlueprint)
+    api.register_blueprint(peso_blueprint.pesoBluePrint)
 
 
     return app
@@ -52,8 +54,6 @@ def set_up_db(app):
     """Crear Tablas"""
     with app.app_context():
         db.create_all()
-
-
 
 
 
