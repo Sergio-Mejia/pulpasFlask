@@ -6,7 +6,7 @@ def create(descripcion: str) -> dict:
     peso_n = Peso(descripcion)
     db.session.add(peso_n)
     db.session.commit()
-    respuesta = "Nuevo peso creado"
+    respuesta = {"Respuesta": f"Nuevo peso creado de {peso_n.descripcion}"}
 
     return respuesta
 
@@ -14,7 +14,7 @@ def delete(id: int) -> dict:
     peso_borrar = Peso.query.get(id)
     db.session.delete(peso_borrar)
     db.session.commit()
-    respuesta = "Peso eliminado"
+    respuesta = {"Respuesta": f"Peso eliminado correctamente"}
 
     return respuesta
 
@@ -23,7 +23,7 @@ def update(id:int, descripcion:str) -> dict:
     peso_actualizar.descripcion = descripcion
     db.session.add(peso_actualizar)
     db.session.commit()
-    respuesta = "Peso actualizado"
+    respuesta = {"Respuesta": f"Se actualizó el peso {id} a {descripcion}"}
 
     return respuesta
 
