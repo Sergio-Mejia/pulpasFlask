@@ -59,3 +59,11 @@ class pedidoSchemaDelete(ma.Schema):
 
     id_pedido = ma.fields.Integer(required=True)
 
+class pedidoSchemaUpdate(ma.Schema):
+    class Meta:
+        ordered = True
+
+    id_pedido = ma.fields.Integer(required=True)
+    id_fruta = ma.fields.Integer(required=True)
+    id_peso = ma.fields.Integer(required=True)
+    cantidad = ma.fields.Integer(required=True)
