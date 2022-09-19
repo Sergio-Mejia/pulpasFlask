@@ -16,9 +16,9 @@ class Pedido(db.Model):
 
     __tablename__ = 'pedido'
 
-    id_pedido = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    id_fruta = db.Column(db.Integer, db.ForeignKey('fruta.id'), primary_key=True)
-    id_peso = db.Column(db.Integer, db.ForeignKey('peso.id'), primary_key=True)
+    id_pedido = db.Column(db.Integer, primary_key=True)
+    id_fruta = db.Column(db.Integer, db.ForeignKey('fruta.id'))
+    id_peso = db.Column(db.Integer, db.ForeignKey('peso.id'))
     fecha_registro = db.Column(db.DateTime(timezone=True), server_default=func.now())
     cantidad = db.Column(db.Integer())
 
@@ -51,3 +51,11 @@ class pedidoSchemaCreate(ma.Schema):
     id_fruta = ma.fields.Integer(required=True)
     id_peso = ma.fields.Integer(required=True)
     cantidad = ma.fields.Integer(required=True)
+
+
+class pedidoSchemaDelete(ma.Schema):
+    class Meta:
+        ordered = True
+
+    id_pedido = ma.fields.Integer(required=True)
+
