@@ -1,5 +1,6 @@
 {
-  "database": "pulpasPrueba",
-  "user": "postgres",
-  "password": "admin"
+  "database": "d4e5jb5pvo7arf",
+  "user": "cdkpdsynnhqddf",
+  "password": "8e41289d281ecd6fd473eae9c1e4b0f418590dba77c1d316093d76009a55b886",
+  "host":"ec2-44-205-177-160.compute-1.amazonaws.com"
 }

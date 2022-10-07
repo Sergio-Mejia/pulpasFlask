@@ -11,15 +11,16 @@ pesoBluePrint = Blueprint(
 )
 
 @pesoBluePrint.route('/create', methods=['POST'])
-@pesoBluePrint.arguments(peso.pesoSchemaCreate, location='json')
+@pesoBluePrint.arguments(peso.pesoSchemaCreate, location='query')
 @control_errores()
 def create(data):
     descripcion = data['descripcion']
-    mensaje_respuesta = peso_controlador.create(descripcion)
+    id_precio = data['id_precio']
+    mensaje_respuesta = peso_controlador.create(descripcion, id_precio)
     return make_response(mensaje_respuesta, 200)
 
 @pesoBluePrint.route('/delete', methods=['DELETE'])
-@pesoBluePrint.arguments(peso.pesoSchemaDelete, location='json')
+@pesoBluePrint.arguments(peso.pesoSchemaDelete, location='query')
 @control_errores()
 def delete(data):
     id = data['id']
@@ -27,12 +28,13 @@ def delete(data):
     return make_response(mensaje_respuesta, 200)
 
 @pesoBluePrint.route('/update', methods=['PATCH'])
-@pesoBluePrint.arguments(peso.pesoSchemaUpdate, location='json')
+@pesoBluePrint.arguments(peso.pesoSchemaUpdate, location='query')
 @control_errores()
 def update(data):
     id = data['id']
     descripcion = data['descripcion']
-    mensaje_respuesta = peso_controlador.update(id, descripcion)
+    id_precio = data['id_precio']
+    mensaje_respuesta = peso_controlador.update(id, descripcion, id_precio)
     return make_response(mensaje_respuesta, 200)
 
 @pesoBluePrint.route('/get', methods=['GET'])

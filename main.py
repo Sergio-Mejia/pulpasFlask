@@ -8,6 +8,7 @@ from Controladores import fruta_controlador
 from BluePrints import fruta_blueprint
 from BluePrints import peso_blueprint
 from BluePrints import pedido_blueprint
+from BluePrints import precio_blueprint
 from flask import jsonify
 
 
@@ -20,7 +21,7 @@ def loadFileConfig():
 def loaddbSettings():
     with open('dbSettings.json') as f:
         data = json.load(f)
-    data = f"""postgresql://{data["user"]}:{data["password"]}@localhost/{data["database"]}"""
+    data = f"""postgresql://{data["user"]}:{data["password"]}@{data["host"]}/{data["database"]}"""
     return data
 
 
@@ -48,15 +49,15 @@ def create_app():
     api.register_blueprint(fruta_blueprint.frutaBlueprint)
     api.register_blueprint(peso_blueprint.pesoBluePrint)
     api.register_blueprint(pedido_blueprint.pedidoBlueprint)
-
+    api.register_blueprint(precio_blueprint.precioBluePrint)
 
     return app
 
+
 def set_up_db(app):
-    """Crear Tablas"""
+    """Crear todas las Tablas"""
     with app.app_context():
         db.create_all()
-
 
 
 if __name__ == '__main__':
