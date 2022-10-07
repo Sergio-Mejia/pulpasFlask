@@ -15,7 +15,8 @@ pesoBluePrint = Blueprint(
 @control_errores()
 def create(data):
     descripcion = data['descripcion']
-    mensaje_respuesta = peso_controlador.create(descripcion)
+    id_precio = data['id_precio']
+    mensaje_respuesta = peso_controlador.create(descripcion, id_precio)
     return make_response(mensaje_respuesta, 200)
 
 @pesoBluePrint.route('/delete', methods=['DELETE'])
@@ -32,7 +33,8 @@ def delete(data):
 def update(data):
     id = data['id']
     descripcion = data['descripcion']
-    mensaje_respuesta = peso_controlador.update(id, descripcion)
+    id_precio = data['id_precio']
+    mensaje_respuesta = peso_controlador.update(id, descripcion, id_precio)
     return make_response(mensaje_respuesta, 200)
 
 @pesoBluePrint.route('/get', methods=['GET'])

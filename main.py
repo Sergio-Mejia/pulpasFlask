@@ -8,6 +8,7 @@ from Controladores import fruta_controlador
 from BluePrints import fruta_blueprint
 from BluePrints import peso_blueprint
 from BluePrints import pedido_blueprint
+from BluePrints import precio_blueprint
 from flask import jsonify
 
 
@@ -48,6 +49,7 @@ def create_app():
     api.register_blueprint(fruta_blueprint.frutaBlueprint)
     api.register_blueprint(peso_blueprint.pesoBluePrint)
     api.register_blueprint(pedido_blueprint.pedidoBlueprint)
+    api.register_blueprint(precio_blueprint.precioBluePrint)
 
     return app
 

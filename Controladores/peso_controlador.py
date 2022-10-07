@@ -2,8 +2,8 @@ from database import db
 from flask import jsonify
 from Modelos.peso import Peso
 
-def create(descripcion: str) -> dict:
-    peso_n = Peso(descripcion)
+def create(descripcion: str, id_precio:int) -> dict:
+    peso_n = Peso(descripcion, id_precio)
     db.session.add(peso_n)
     db.session.commit()
     respuesta = {"Respuesta": f"Nuevo peso creado de {peso_n.descripcion}"}
@@ -18,9 +18,10 @@ def delete(id: int) -> dict:
 
     return respuesta
 
-def update(id:int, descripcion:str) -> dict:
+def update(id:int, descripcion:str, id_precio: int) -> dict:
     peso_actualizar = Peso.query.get(id)
     peso_actualizar.descripcion = descripcion
+    peso_actualizar.id_precio = id_precio
     db.session.add(peso_actualizar)
     db.session.commit()
     respuesta = {"Respuesta": f"Se actualizó el peso {id} a {descripcion}"}
