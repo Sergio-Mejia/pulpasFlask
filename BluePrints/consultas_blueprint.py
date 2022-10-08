@@ -18,3 +18,10 @@ consultaBlueprint = Blueprint(
 def get_pedido_fruta(data):
     mensaje_respuesta = consultas_controlador.get_pedido_por_Fruta(data)
     return make_response(mensaje_respuesta, 200)
+
+@consultaBlueprint.route('/suma_total', methods=['GET'])
+@consultaBlueprint.arguments(fruta.ResultadosEsquemaFruta, location='query')
+@control_errores()
+def get_suma_total(data):
+    mensaje_respuesta = consultas_controlador.get_suma_total(data)
+    return make_response(mensaje_respuesta, 200)
