@@ -17,3 +17,26 @@ def create(data):
     valor = data['valor']
     mensaje_respuesta = precio_controlador.create(valor)
     return make_response(mensaje_respuesta, 200)
+
+@precioBluePrint.route('/get', methods=['GET'])
+@control_errores()
+def get():
+    mensaje_respuesta = precio_controlador.get()
+    return make_response(mensaje_respuesta, 200)
+
+@precioBluePrint.route('/delete', methods=['DELETE'])
+@precioBluePrint.arguments(precio.precioSchemaDelete, location='query')
+@control_errores()
+def delete(data):
+    id_precio = data['id']
+    mensaje_respuesta = precio_controlador.delete(id_precio)
+    return make_response(mensaje_respuesta, 200)
+
+@precioBluePrint.route('/update', methods=['PATCH'])
+@precioBluePrint.arguments(precio.precioSchemaUpdate, location='json')
+@control_errores()
+def update(data):
+    id = data['id']
+    valor = data['valor']
+    mensaje_respuesta = precio_controlador.update(id, valor)
+    return make_response(mensaje_respuesta, 200)
