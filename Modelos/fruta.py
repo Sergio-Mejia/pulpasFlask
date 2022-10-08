@@ -49,3 +49,10 @@ class FrutaEsquemaUpdate(ma.Schema):
 
     id = ma.fields.Integer(required=True)
     descripcion = ma.fields.String(required=True)
+
+class ResultadosEsquemaFruta(ma.Schema):
+    """Esquema de validacion para endpoint de Fruta: Get"""
+    class Meta:
+        ordered = True
+
+    descripcion = ma.fields.String(required=False)
