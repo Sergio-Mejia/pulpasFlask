@@ -25,7 +25,7 @@ def get():
     return make_response(mensaje_respuesta, 200)
 
 @precioBluePrint.route('/delete', methods=['DELETE'])
-@precioBluePrint.arguments(precio.precioSchemaDelete, location='query')
+@precioBluePrint.arguments(precio.precioSchemaDelete, location='json')
 @control_errores()
 def delete(data):
     id_precio = data['id']

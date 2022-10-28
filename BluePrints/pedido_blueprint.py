@@ -11,7 +11,7 @@ pedidoBlueprint = Blueprint(
 )
 
 @pedidoBlueprint.route('/create', methods=['POST'])
-@pedidoBlueprint.arguments(pedido.pedidoSchemaCreate, location='query')
+@pedidoBlueprint.arguments(pedido.pedidoSchemaCreate, location='json')
 @control_errores()
 def create(data):
     id_fruta = data['id_fruta']
@@ -21,7 +21,7 @@ def create(data):
     return make_response(mensaje_respuesta, 200)
 
 @pedidoBlueprint.route('/delete', methods=['DELETE'])
-@pedidoBlueprint.arguments(pedido.pedidoSchemaDelete, location='query')
+@pedidoBlueprint.arguments(pedido.pedidoSchemaDelete, location='json')
 @control_errores()
 def delete(data):
     id_pedido = data['id_pedido']
@@ -36,7 +36,7 @@ def get():
 
 
 @pedidoBlueprint.route('/update', methods=['PATCH'])
-@pedidoBlueprint.arguments(pedido.pedidoSchemaUpdate, location='query')
+@pedidoBlueprint.arguments(pedido.pedidoSchemaUpdate, location='json')
 @control_errores()
 def update(data):
     id_pedido = data['id_pedido']

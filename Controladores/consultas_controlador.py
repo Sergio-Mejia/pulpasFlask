@@ -57,4 +57,4 @@ def get_suma_total(data:dict) -> dict:
     
     return [row._asdict() for row in rs]
 
-    
+
