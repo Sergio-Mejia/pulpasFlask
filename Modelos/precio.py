@@ -34,3 +34,21 @@ class valorSchemaCreate(ma.Schema):
         ordered = True
 
     valor = ma.fields.Integer(required=True)
+
+
+class precioSchemaDelete(ma.Schema):
+    "Esquema de validación para la eliminación de un precio"
+
+    class Meta:
+        ordered = True
+    
+    id = ma.fields.Integer(required = True)
+
+class precioSchemaUpdate(ma.Schema):
+    "Esquema de validación para la actualización de precios"
+
+    class Meta:
+        ordered = True
+    
+    id = ma.fields.Integer(required = True)
+    valor = ma.fields.Integer(required=True)

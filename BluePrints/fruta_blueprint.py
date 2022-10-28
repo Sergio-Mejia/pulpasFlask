@@ -20,7 +20,7 @@ def create(data):
     return make_response(mensaje_respuesta, 200)
 
 @frutaBlueprint.route('/delete', methods=['DELETE'])
-@frutaBlueprint.arguments(fruta.FrutaEsquemaDelete, location='query')
+@frutaBlueprint.arguments(fruta.FrutaEsquemaDelete, location='json')
 @control_errores()
 def delete(data):
     id = data['id']
